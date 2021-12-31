@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'PurpleIO'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	implementation 'org.apache.httpcomponents:httpclient:4.5'
+	implementation 'com.google.code.gson:gson:2.8.5'
+
+}
+
+test {
+	useJUnitPlatform()
+}
