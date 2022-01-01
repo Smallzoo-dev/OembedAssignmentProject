@@ -1,4 +1,4 @@
-package PurpleIO.OembedAssignmentProject;
+package PurpleIO.OembedAssignmentProject.domain;
 
 import lombok.Getter;
 import lombok.Setter;

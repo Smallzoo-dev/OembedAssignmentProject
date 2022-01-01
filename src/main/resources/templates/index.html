@@ -32,6 +32,9 @@
                         <button class="btn btn-lg btn-light" type="submit">Submit!</button>
                     </div>
                 </form>
+                <p th:if="${hasError != null}" th:text="${hasError}"> .. </p>
+                <p th:if="${hasError != null}"> "https://", "http://"를 붙여서 다시 시도 해주시거나,<br>
+                    oembed.com에서 지원하는 provider 목록을 확인 하실 수 있습니다.</p>
             </div>
         </header>
         <!-- About section-->
@@ -46,43 +49,43 @@
                                 <th>Parameters</th>
                                 <th>Fields</th>
                             </tr>
-                            <tr>
-                                <td>version</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.version != null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.version != null}">version</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.version != null}"
                                     th:text="${oembedResponse.version}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>type</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.type!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.type!= null}">type</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.type!= null}"
                                     th:text="${oembedResponse.type}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>title</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.title!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.title!= null}">title</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.title!= null}"
                                     th:text="${oembedResponse.title}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>author_name</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.author_name!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.author_name!= null}">author_name</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.author_name!= null}"
                                     th:text="${oembedResponse.author_name}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>author_url</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.author_url!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.author_url!= null}">author_url</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.author_url!= null}"
                                     th:text="${oembedResponse.author_url}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>provider_name</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.provider_name!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.provider_name!= null}">provider_name</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.provider_name!= null}"
                                     th:text="${oembedResponse.provider_name}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>provider_url</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.provider_url!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.provider_url!= null}">provider_url</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.provider_url!= null}"
                                     th:text="${oembedResponse.provider_url}"> .. </td>
                             </tr>
-                            <tr>
-                                <td>cache_age</td>
+                            <tr th:if="${oembedResponse != null and oembedResponse.cache_age!= null}">
+                                <td th:if="${oembedResponse != null and oembedResponse.cache_age!= null}">cache_age</td>
                                 <td th:if="${oembedResponse != null and oembedResponse.cache_age!= null}"
                                     th:text="${oembedResponse.cache_age}"> .. </td>
                             </tr>
