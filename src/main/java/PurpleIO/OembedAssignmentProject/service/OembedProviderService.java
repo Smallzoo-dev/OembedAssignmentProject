@@ -2,7 +2,6 @@ package PurpleIO.OembedAssignmentProject.service;
 
 
 import PurpleIO.OembedAssignmentProject.domain.OembedEndpoint;
-import PurpleIO.OembedAssignmentProject.domain.OembedResponse;
 import PurpleIO.OembedAssignmentProject.exceptions.EndPointNotFountException;
 import com.google.gson.Gson;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -21,9 +20,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class OembedProviderService {
@@ -116,9 +113,9 @@ public class OembedProviderService {
     /**
      * 매칭되는 OembedEndpoint객체가 있다면, 해당 객체로부터 endpoint와 url을 받아와 요청을 보낸다.
      * @param userRequestUrl
-     * @return oembedResponse 객체
+     * @return oembedResponse map
      */
-    public OembedResponse getOembedResponse(String userRequestUrl) throws IOException {
+    public Map<String, String> getOembedResponse(String userRequestUrl) throws IOException {
 
             Optional<OembedEndpoint> endpoint = findEndpoint(userRequestUrl);
             OembedEndpoint oembedEndpoint = endpoint.orElseThrow(() ->
@@ -130,8 +127,7 @@ public class OembedProviderService {
             CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
             String responseResult = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
 
-            return gson.fromJson(responseResult, OembedResponse.class);
-
+        return gson.fromJson(responseResult, Map.class);
 
     }
 

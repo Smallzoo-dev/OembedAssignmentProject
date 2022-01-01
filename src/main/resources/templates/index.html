@@ -44,78 +44,29 @@
                     <div class="col-lg-8">
                         <h2>Oembed Response Parameter</h2>
                         <br>
-                        <table class="table table-striped w-auto">
-                            <tr>
-                                <th>Parameters</th>
-                                <th>Fields</th>
+                        <table class="table table-striped w-auto" th:if="${oembedResponse != null}">
+
+                            <tr th:if="${oembedResponse.get('title') != null}">
+                                <th th:text="Title"></th>
+                                <th th:text="${oembedResponse.get('title')}"></th>
                             </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.version != null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.version != null}">version</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.version != null}"
-                                    th:text="${oembedResponse.version}"> .. </td>
+
+                            <tr th:each="oembedValue : ${oembedResponse}">
+                                <td th:if="${oembedValue.key != 'title' and oembedValue.key != 'thumbnail_url'}" th:utext="${oembedValue.key}"> .. </td>
+                                <td th:if="${oembedValue.key != 'title' and oembedValue.key != 'thumbnail_url'}" th:utext="${oembedValue.value}"> .. </td>
                             </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.type!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.type!= null}">type</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.type!= null}"
-                                    th:text="${oembedResponse.type}"> .. </td>
+
+                            <tr th:if="${oembedResponse.get('thumbnail_url') != null}">
+                                <td th:text="thumbnail_url"></td>
+                                <td> <img th:src="${oembedResponse.get('thumbnail_url')}"> </td>
                             </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.title!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.title!= null}">title</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.title!= null}"
-                                    th:text="${oembedResponse.title}"> .. </td>
-                            </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.author_name!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.author_name!= null}">author_name</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.author_name!= null}"
-                                    th:text="${oembedResponse.author_name}"> .. </td>
-                            </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.author_url!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.author_url!= null}">author_url</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.author_url!= null}"
-                                    th:text="${oembedResponse.author_url}"> .. </td>
-                            </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.provider_name!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.provider_name!= null}">provider_name</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.provider_name!= null}"
-                                    th:text="${oembedResponse.provider_name}"> .. </td>
-                            </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.provider_url!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.provider_url!= null}">provider_url</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.provider_url!= null}"
-                                    th:text="${oembedResponse.provider_url}"> .. </td>
-                            </tr>
-                            <tr th:if="${oembedResponse != null and oembedResponse.cache_age!= null}">
-                                <td th:if="${oembedResponse != null and oembedResponse.cache_age!= null}">cache_age</td>
-                                <td th:if="${oembedResponse != null and oembedResponse.cache_age!= null}"
-                                    th:text="${oembedResponse.cache_age}"> .. </td>
-                            </tr>
+
+
                         </table>
                     </div>
                 </div>
                 <br>
-                <div class="container px-4">
-                    <div class="row gx-4 justify-content-center">
-                        <div class="col-lg-8">
-                            <h2>Contents</h2>
-                            <br>
-                            <table class="table table-striped w-auto" th:if="${oembedResponse != null}">
-                                <tr th:if="${oembedResponse.thumbnail_height != null}">
-                                    <td>Height</td>
-                                    <td th:text="${oembedResponse.thumbnail_height}"> .. </td>
-                                </tr>
-                                <tr th:if="${oembedResponse.thumbnail_width != null}">
-                                    <td>Width</td>
-                                    <td th:text="${oembedResponse.thumbnail_width}"> .. </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <img th:if="${oembedResponse != null and oembedResponse.thumbnail_url != null}" th:src="${oembedResponse.thumbnail_url}">
-                            <br>
-                            <a th:if="${oembedResponse != null and oembedResponse.html != null}" th:utext="${oembedResponse.html}"></a>
 
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 

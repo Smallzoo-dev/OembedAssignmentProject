@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Controller
 @RequiredArgsConstructor
 public class OembedController {
@@ -22,7 +24,7 @@ public class OembedController {
     public String submitURL(@RequestParam("userRequestUrl") String userRequestUrl,
                             Model model) {
         try {
-            OembedResponse oembedResponse = oembedProviderService.getOembedResponse(userRequestUrl);
+            Map<String, String> oembedResponse = oembedProviderService.getOembedResponse(userRequestUrl);
             model.addAttribute("oembedResponse", oembedResponse);
             return "index";
         } catch (Exception e) {
