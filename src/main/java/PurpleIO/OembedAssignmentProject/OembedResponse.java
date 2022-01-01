@@ -14,21 +14,21 @@ public class OembedResponse {
     //(optional)
     private String title;
     //(optional)
-    private String authorName;
+    private String author_name;
     //(optional)
-    private String authorUrl;
+    private String author_url;
     //(optional)
-    private String providerName;
+    private String provider_name;
     //(optional)
-    private String providerUrl;
+    private String provider_url;
     //(optional)
-    private Long cacheAge;
+    private Long cache_age;
     //(optional)
-    private String thumbnailUrl;
+    private String thumbnail_url;
     //(optional)
-    private Integer thumbnailWidth;
+    private Integer thumbnail_width;
     //(optional)
-    private Integer thumbnailHeight;
+    private Integer thumbnail_height;
     //(optional, but required in photo type)
     private String url;
     //(optional, but required in video, rich type)

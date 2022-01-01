@@ -25,9 +25,9 @@
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Please input your URL</h1>
                 <p class="lead">Get Meta Data And Preview with your URL By Oembed Provider</p>
-                <form action="#" th:action = "@{/submitURL}"  method="get">
+                <form action="#" th:action = "@{/submitUrl}"  method="get">
                     <div>
-                        <input type="text" id="submitURL" class="form-control w-75 m-md-auto">
+                        <input type="text" id="submitUrl" th:name="userRequestUrl" class="form-control w-75 m-md-auto">
                         <br>
                         <button class="btn btn-lg btn-light" type="submit">Submit!</button>
                     </div>
@@ -39,29 +39,78 @@
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
-                        <h2>About this page</h2>
+                        <h2>Oembed Response Parameter</h2>
                         <br>
                         <table class="table table-striped w-auto">
                             <tr>
-                                <td>첫번째 칸</td>
-                                <td>두번째 칸</td>
+                                <th>Parameters</th>
+                                <th>Fields</th>
                             </tr>
                             <tr>
-                                <td>첫번째 칸</td>
-                                <td>두번째 칸</td>
+                                <td>version</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.version != null}"
+                                    th:text="${oembedResponse.version}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.type!= null}"
+                                    th:text="${oembedResponse.type}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.title!= null}"
+                                    th:text="${oembedResponse.title}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>author_name</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.author_name!= null}"
+                                    th:text="${oembedResponse.author_name}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>author_url</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.author_url!= null}"
+                                    th:text="${oembedResponse.author_url}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>provider_name</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.provider_name!= null}"
+                                    th:text="${oembedResponse.provider_name}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>provider_url</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.provider_url!= null}"
+                                    th:text="${oembedResponse.provider_url}"> .. </td>
+                            </tr>
+                            <tr>
+                                <td>cache_age</td>
+                                <td th:if="${oembedResponse != null and oembedResponse.cache_age!= null}"
+                                    th:text="${oembedResponse.cache_age}"> .. </td>
                             </tr>
                         </table>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Services section-->
-        <section class="bg-light" id="services">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Contents</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+                <br>
+                <div class="container px-4">
+                    <div class="row gx-4 justify-content-center">
+                        <div class="col-lg-8">
+                            <h2>Contents</h2>
+                            <br>
+                            <table class="table table-striped w-auto" th:if="${oembedResponse != null}">
+                                <tr th:if="${oembedResponse.thumbnail_height != null}">
+                                    <td>Height</td>
+                                    <td th:text="${oembedResponse.thumbnail_height}"> .. </td>
+                                </tr>
+                                <tr th:if="${oembedResponse.thumbnail_width != null}">
+                                    <td>Width</td>
+                                    <td th:text="${oembedResponse.thumbnail_width}"> .. </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <img th:if="${oembedResponse != null and oembedResponse.thumbnail_url != null}" th:src="${oembedResponse.thumbnail_url}">
+                            <br>
+                            <a th:if="${oembedResponse != null and oembedResponse.html != null}" th:utext="${oembedResponse.html}"></a>
+
+                        </div>
                     </div>
                 </div>
             </div>
